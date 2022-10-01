@@ -12,6 +12,7 @@ import {
 const products_reducer = (state, action) => {
   switch (action.type) {
     case SIDEBAR_OPEN: {
+<<<<<<< HEAD
       return { ...state, opensiderBarContent: true };
     }
     case SIDEBAR_CLOSE: {
@@ -44,4 +45,16 @@ const products_reducer = (state, action) => {
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 
+=======
+      return { ...state, isSidebarOpen: true };
+    }
+    default: {
+      return state;
+    }
+  }
+  return state;
+  throw new Error(`No Matching "${action.type}" - action type`);
+};
+
+>>>>>>> 4edc8b6525763ef3b99aea13002a722dee200efe
 export default products_reducer;
