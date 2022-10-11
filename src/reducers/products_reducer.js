@@ -11,10 +11,10 @@ import {
 
 const products_reducer = (state, action) => {
   if (action.type === SIDEBAR_OPEN) {
-    return { ...state, isSidebarOpen: true };
+    return { ...state, opensiderBarContent: true };
   }
   if (action.type === SIDEBAR_CLOSE) {
-    return { ...state, isSidebarOpen: false };
+    return { ...state, opensiderBarContent: false };
   }
   if (action.type === GET_PRODUCTS_BEGIN) {
     return { ...state, products_loading: true };
