@@ -23,14 +23,16 @@ const filter_reducer = (state, action) => {
       };
     case SET_LISTVIEW:
       return { ...state, grid_view: false };
+
     case SET_GRIDVIEW:
       return { ...state, grid_view: true };
+
     case UPDATE_SORT:
       return { ...state, sort: action.payload };
+
     // ----------------------
     case SORT_PRODUCTS:
       const { sort, filtered_products } = state;
-
       let tempProducts = [...filtered_products];
 
       if (sort === "price-lowest") {
@@ -56,9 +58,65 @@ const filter_reducer = (state, action) => {
     case UPDATE_FILTERS:
       const { name, value } = action.payload;
       return { ...state, filters: { ...state.filters, [name]: value } };
+
     case FILTER_PRODUCTS:
-      console.log("filtering products");
-      return { ...state };
+      const { all_products } = state;
+      const { text, category, company, color, price, shipping } = state.filters;
+
+      let tempProducts_filters = [...all_products];
+      // Filtering
+      if (text) {
+        tempProducts_filters = tempProducts_filters.filter((product) => {
+          return product.name.toLowerCase().includes(text);
+        });
+      }
+      // CATEGORY
+      if (category !== "all") {
+        tempProducts_filters = tempProducts_filters.filter((product) => {
+          return product.category.includes(category);
+        });
+      }
+      // COMPANY
+      if (company !== "all") {
+        tempProducts_filters = tempProducts_filters.filter((product) => {
+          return product.company === company;
+        });
+      }
+      // COLOR
+      if (color !== "all") {
+        tempProducts_filters = tempProducts_filters.filter((product) => {
+          return product.colors.find((c) => c === color);
+        });
+      }
+      // PRICE
+      if (price !== "all") {
+        tempProducts_filters = tempProducts_filters.filter((product) => {
+          return product.price <= parseInt(price, 10);
+        });
+      }
+      // SHIPPING
+      if (shipping) {
+        tempProducts_filters = tempProducts_filters.filter((product) => {
+          return product.shipping === false;
+        });
+      }
+
+      return { ...state, filtered_products: tempProducts_filters };
+
+    case CLEAR_FILTERS:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: "",
+          company: "all",
+          category: "all",
+          color: "all",
+          price: state.filters.max_price,
+          shipping: false,
+        },
+      };
+
     default:
       return state;
   }
