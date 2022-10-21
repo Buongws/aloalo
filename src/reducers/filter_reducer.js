@@ -64,6 +64,7 @@ const filter_reducer = (state, action) => {
       const { text, category, company, color, price, shipping } = state.filters;
 
       let tempProducts_filters = [...all_products];
+
       // Filtering
       if (text) {
         tempProducts_filters = tempProducts_filters.filter((product) => {
@@ -97,7 +98,7 @@ const filter_reducer = (state, action) => {
       // SHIPPING
       if (shipping) {
         tempProducts_filters = tempProducts_filters.filter((product) => {
-          return product.shipping === false;
+          return product.shipping === true;
         });
       }
 
