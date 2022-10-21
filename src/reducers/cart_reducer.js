@@ -5,18 +5,10 @@ import {
   REMOVE_CART_ITEM,
   TOGGLE_CART_ITEM_AMOUNT,
 } from "../actions";
-<<<<<<< HEAD
 
 const cart_reducer = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
-=======
-import products_reducer from "./products_reducer";
-
-const cart_reducer = (state, action) => {
-  switch (action.type) {
-    case ADD_TO_CART:
->>>>>>> 92cfdbe5d8079fb106410e5f9e159a5ab904722c
       const { id, color, amount, product } = action.payload;
       const tempItem = state.cart.find((i) => i.id === id + color);
       if (tempItem) {
@@ -31,7 +23,6 @@ const cart_reducer = (state, action) => {
             return cartItem;
           }
         });
-<<<<<<< HEAD
 
         return { ...state, cart: tempCart };
       } else {
@@ -101,23 +92,6 @@ const cart_reducer = (state, action) => {
       return state;
     }
   }
-=======
-        return { ...state, cart: tempCart };
-      } else {
-        const newItem = {
-          id: id + color,
-          name: product.name,
-          color,
-          amount,
-          image: product.images[0].url,
-          price: product.price,
-          max: product.stock,
-        };
-        return { ...state, cart: [...state.cart, newItem] };
-      }
-  }
-
->>>>>>> 92cfdbe5d8079fb106410e5f9e159a5ab904722c
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 

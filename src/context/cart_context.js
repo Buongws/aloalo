@@ -8,38 +8,27 @@ import {
   COUNT_CART_TOTALS,
 } from "../actions";
 
-<<<<<<< HEAD
-// const getLocalStorage = () => {
-//   let cart = localStorage.getItem("cart");
-//   if (cart) {
-//     return JSON.parse(cart);
-//   } else {
-//     return [];
-//   }
-// };
+const getLocalStorage = () => {
+  let cart = localStorage.getItem("cart");
+  if (cart) {
+    return JSON.parse(cart);
+  } else {
+    return [];
+  }
+};
 
 const initialState = {
-  cart: [],
+  cart: getLocalStorage(),
   total_items: 0,
   total_amount: 0,
   shipping_fee: 534,
 };
 
-=======
-const initialState = {
-  cart: [],
-  total_items: 0,
-  total_amout: 0,
-  shipping_fee: 534,
-};
-
->>>>>>> 92cfdbe5d8079fb106410e5f9e159a5ab904722c
 const CartContext = React.createContext();
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-<<<<<<< HEAD
   // add to cart
   const addToCart = (id, color, amount, product) => {
     dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } });
@@ -67,14 +56,6 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{ ...state, addToCart, removeItem, toggleAmount, clearCart }}
     >
-=======
-  const addToCart = (id, color, amount, product) => {
-    dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } });
-  };
-
-  return (
-    <CartContext.Provider value={{ ...state, addToCart }}>
->>>>>>> 92cfdbe5d8079fb106410e5f9e159a5ab904722c
       {children}
     </CartContext.Provider>
   );
