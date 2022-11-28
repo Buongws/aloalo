@@ -27,12 +27,14 @@ const filter_reducer = (state, action) => {
     case SET_GRIDVIEW:
       return { ...state, grid_view: true };
 
+    // ----------------------
+
     case UPDATE_SORT:
       return { ...state, sort: action.payload };
 
-    // ----------------------
     case SORT_PRODUCTS:
       const { sort, filtered_products } = state;
+
       let tempProducts = [...filtered_products];
 
       if (sort === "price-lowest") {
@@ -59,6 +61,18 @@ const filter_reducer = (state, action) => {
       const { name, value } = action.payload;
       return { ...state, filters: { ...state.filters, [name]: value } };
 
+    
+
+
+
+
+
+
+
+
+
+
+    
     case FILTER_PRODUCTS:
       const { all_products } = state;
       const { text, category, company, color, price, shipping } = state.filters;
@@ -104,6 +118,23 @@ const filter_reducer = (state, action) => {
 
       return { ...state, filtered_products: tempProducts_filters };
 
+    
+    
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+    
     case CLEAR_FILTERS:
       return {
         ...state,

@@ -44,6 +44,11 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SORT_PRODUCTS });
   }, [products, state.sort, state.filters]);
 
+  const updateSort = (e) => {
+    const value = e.target.value;
+    dispatch({ type: UPDATE_SORT, payload: value });
+  };
+
   const setGridView = () => {
     dispatch({ type: SET_GRIDVIEW });
   };
@@ -52,10 +57,6 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SET_LISTVIEW });
   };
 
-  const updateSort = (e) => {
-    const value = e.target.value;
-    dispatch({ type: UPDATE_SORT, payload: value });
-  };
   const updateFilters = (e) => {
     let value = e.target.value;
     let name = e.target.name;

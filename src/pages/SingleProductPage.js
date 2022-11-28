@@ -55,6 +55,7 @@ const SingleProductPage = () => {
     company,
     images,
   } = product;
+  console.log(stock);
   return (
     <Wrapper>
       <PageHero title={name} product />
@@ -97,7 +98,7 @@ const Wrapper = styled.main`
     margin-top: 2rem;
   }
   .price {
-    color: var(--clr-primary-5);
+    color: var(--clr-primary-6);
   }
   .desc {
     line-height: 2;
