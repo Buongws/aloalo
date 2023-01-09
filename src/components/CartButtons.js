@@ -67,7 +67,7 @@ const Wrapper = styled.div`
     position: absolute;
     top: -10px;
     right: -16px;
-    background: var(--clr-primary-5);
+    background: var(--clr-primary-6);
     width: 16px;
     height: 16px;
     display: flex;

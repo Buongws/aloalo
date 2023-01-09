@@ -61,18 +61,7 @@ const filter_reducer = (state, action) => {
       const { name, value } = action.payload;
       return { ...state, filters: { ...state.filters, [name]: value } };
 
-    
-
-
-
-
-
-
-
-
-
-
-    
+ 
     case FILTER_PRODUCTS:
       const { all_products } = state;
       const { text, category, company, color, price, shipping } = state.filters;
